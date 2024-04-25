@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Build") {
+            steps {
+                sh "sudo JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 mvn clean install"
+            }
+        }
+
+/*
+        stage ("Obfuscate") {
+            steps {
+                    sh "sudo JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 java -jar ./Obfuscation/obf.jar obfuscate ./target/AbyssCollectors-PRE.jar --libs=obf-libs --phantom --exempt=./Obfuscation/exempt.txt --output AbyssCollectors.jar "
+            }
+            post {
+                success {
+
+                }
+            }
+        }
+        */
+
+    }
+
+    post {
+        success {
+            archiveArtifacts artifacts: 'target/AbyssVoteParty.jar'
+            always {
+              cleanWs()
+            }
+        }
+    }
+}

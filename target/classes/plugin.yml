@@ -1,0 +1,12 @@
+name: AbyssVoteParty
+version: '1.0.0'
+main: org.abyssdev.voteparty.AbyssVoteParty
+api-version: 1.13
+depend:
+  - AbyssLib
+
+softdepend:
+  - PlaceholderAPI
+
+authors:
+  - Words

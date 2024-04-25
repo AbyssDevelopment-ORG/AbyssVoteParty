@@ -1,0 +1,6 @@
+org\abyssdev\voteparty\commands\subs\AddVoteCommand.class
+org\abyssdev\voteparty\AbyssVoteParty.class
+org\abyssdev\voteparty\placeholder\VotePartyPlaceholderExpansion.class
+org\abyssdev\voteparty\listeners\VoteListener.class
+org\abyssdev\voteparty\commands\subs\StartCommand.class
+org\abyssdev\voteparty\commands\VotePartyAdminCommand.class
