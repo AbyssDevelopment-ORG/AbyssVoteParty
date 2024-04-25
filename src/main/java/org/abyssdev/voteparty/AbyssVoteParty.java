@@ -6,11 +6,13 @@ import net.abyssdev.abysslib.config.AbyssConfig;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
 import net.abyssdev.abysslib.plugin.AbyssPlugin;
 import net.abyssdev.abysslib.text.MessageCache;
+import net.abyssdev.abysslib.utils.PlayerUtils;
 import net.abyssdev.abysslib.utils.Utils;
 import org.abyssdev.voteparty.commands.VotePartyAdminCommand;
 import org.abyssdev.voteparty.listeners.VoteListener;
 import org.abyssdev.voteparty.placeholder.VotePartyPlaceholderExpansion;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.io.*;
@@ -105,6 +107,8 @@ public final class AbyssVoteParty extends AbyssPlugin {
 
         for (final Player onlinePlayer : Bukkit.getServer().getOnlinePlayers()) {
             this.messageCache.sendMessage(onlinePlayer, "vote-party-started", replacer);
+
+            PlayerUtils.dispatchCommands(onlinePlayer, this.commands);
         }
     }
 }
