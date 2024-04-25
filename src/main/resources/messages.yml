@@ -1,0 +1,66 @@
+messages:
+  "no-permission":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&4&l[!] &cYou do not have &4permission&c for this!"
+
+  "played-voted":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&2&l[!] &a%player% &7has voted! &a%votes%&7/&a%required_votes%&7 votes!"
+
+  "vote-party-started":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&2&l[!] &aA vote party has started! There's a total of %reward_count% rewards!"
+
+  "admin-help-message":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&2&l[!] &aAdmin help!"
+
+  "vote-added":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&2&l[!] &aVote added"
+
+  "force-started":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&2&l[!] &aYou have forced the vote party to start!"

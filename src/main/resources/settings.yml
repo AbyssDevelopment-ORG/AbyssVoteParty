@@ -1,0 +1,5 @@
+settings:
+  required-votes: 100
+  announce-votes: true
+  commands:
+    - "give %player% diamond 1"
