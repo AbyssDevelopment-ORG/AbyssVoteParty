@@ -21,7 +21,7 @@ import java.util.List;
 @Setter @Getter
 public final class AbyssVoteParty extends AbyssPlugin {
 
-    private final AbyssConfig settings = getAbyssConfig("settings.yml");
+    private final AbyssConfig settings = getAbyssConfig("settings");
     private final MessageCache messageCache = new MessageCache(this.getConfig("messages"));
 
     private final int requiredVotes = this.settings.getInt("settings.required-votes");
