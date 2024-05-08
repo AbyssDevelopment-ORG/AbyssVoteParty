@@ -1,6 +1,5 @@
 package org.abyssdev.voteparty.listeners;
 
-import com.vexsoftware.votifier.model.Vote;
 import com.vexsoftware.votifier.model.VotifierEvent;
 import net.abyssdev.abysslib.listener.AbyssListener;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
@@ -10,6 +9,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 
+import java.util.concurrent.CompletableFuture;
+
 public class VoteListener extends AbyssListener<AbyssVoteParty> {
 
     public VoteListener(final AbyssVoteParty plugin) {
@@ -18,20 +19,21 @@ public class VoteListener extends AbyssListener<AbyssVoteParty> {
 
     @EventHandler
     public void onVote(final VotifierEvent event) {
+        CompletableFuture.runAsync(() -> {
+            this.plugin.addVote();
 
-        this.plugin.addVote();
+            if (!this.plugin.isAnnounceVotes()) {
+                return;
+            }
 
-        if (!this.plugin.isAnnounceVotes()) {
-            return;
-        }
+            final PlaceholderReplacer placeholderReplacer = new PlaceholderReplacer()
+                    .addPlaceholder("%player%", event.getVote().getUsername())
+                    .addPlaceholder("%votes%", Utils.format(this.plugin.getCurrentVotes()))
+                    .addPlaceholder("%required_votes%", Utils.format(this.plugin.getRequiredVotes()));
 
-        final PlaceholderReplacer placeholderReplacer = new PlaceholderReplacer()
-                .addPlaceholder("%player%", event.getVote().getUsername())
-                .addPlaceholder("%votes%", Utils.format(this.plugin.getCurrentVotes()))
-                .addPlaceholder("%required_votes%", Utils.format(this.plugin.getRequiredVotes()));
-
-        for (final Player onlinePlayer : Bukkit.getServer().getOnlinePlayers()) {
-            this.plugin.getMessageCache().sendMessage(onlinePlayer, "played-voted", placeholderReplacer);
-        }
+            for (final Player onlinePlayer : Bukkit.getServer().getOnlinePlayers()) {
+                this.plugin.getMessageCache().sendMessage(onlinePlayer, "played-voted", placeholderReplacer);
+            }
+        });
     }
 }
